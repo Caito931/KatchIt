@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("KatchIt")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b017893989c36cac33aacca9c70b3bdff5e182d9")]
 [assembly: System.Reflection.AssemblyProductAttribute("KatchIt")]
 [assembly: System.Reflection.AssemblyTitleAttribute("KatchIt")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

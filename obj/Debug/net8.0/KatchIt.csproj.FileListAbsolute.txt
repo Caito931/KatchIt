@@ -20,3 +20,4 @@
 /home/caio/Programing/KatchIt/obj/Debug/net8.0/KatchIt.pdb
 /home/caio/Programing/KatchIt/obj/Debug/net8.0/KatchIt.genruntimeconfig.cache
 /home/caio/Programing/KatchIt/obj/Debug/net8.0/ref/KatchIt.dll
+/home/caio/Programing/KatchIt/obj/Debug/net8.0/KatchIt.sourcelink.json
