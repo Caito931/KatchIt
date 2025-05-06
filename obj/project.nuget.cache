@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "YF6I8iuVN7g=",
+  "success": true,
+  "projectFilePath": "/home/caio/Programing/KatchIt/KatchIt.csproj",
+  "expectedPackageFiles": [
+    "/home/caio/.nuget/packages/raylib-cs/7.0.1/raylib-cs.7.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}
