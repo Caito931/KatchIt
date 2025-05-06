@@ -19,11 +19,7 @@ class Program
         Raylib.SetTargetFPS(60);
 
         // Possible Colors
-        List<Color> Pcolor = new List<Color>();
-        Pcolor.Add(Color.Yellow);
-        Pcolor.Add(Color.Green);
-        Pcolor.Add(Color.Gray);
-        Pcolor.Add(Color.Red);
+        List<Color> Pcolor = [Color.Yellow, Color.Green, Color.Gray, Color.Red];
 
         // Timer && mode
         float MaxFoodTimer = 1.5f;
