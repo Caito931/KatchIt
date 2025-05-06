@@ -9,7 +9,7 @@ namespace KatchIt;
 
 class Food
 {
-    // Shapes: Triangle, Circle, Rectangle
+    // Shapes: Circle, Rectangle
     // Properties
     public Vector2 pos;
     public String shape;
@@ -35,6 +35,7 @@ class Food
     // Check Collision
     public void CheckCollisionWithBowl(Bowl bowl, Player player)
     {
+        // Rectangle Collision
         if (shape == "rect") 
         {
             if (pos.Y + size.Y/2 >= bowl.pos.Y && 
@@ -45,8 +46,14 @@ class Food
                 GameObject.foodList.Remove(this); player.score += 10;
                 GameObject.circeffects.Add(new CircEffect(pos, 1, 1, 50, 100, "Explode", this.color, 1));
             }
-            else if (pos.Y >= Window.Height) { GameObject.foodList.Remove(this); player.attemptsLeft -= 1;} // Hit 'Ground'
+            else if (pos.Y >= Window.Height) 
+            {
+                // Hit 'Ground'
+                GameObject.foodList.Remove(this); player.attemptsLeft -= 1;
+            } 
         }
+
+        // Circle Collision
         else if (shape == "circle")
         {
             if (pos.Y + size.Y >= bowl.pos.Y && 
@@ -57,7 +64,11 @@ class Food
                 GameObject.foodList.Remove(this); player.score += 10;
                 GameObject.circeffects.Add(new CircEffect(pos, 1, 1, 50, 100, "Explode", this.color, 1));
             }
-            else if (pos.Y >= Window.Height) { GameObject.foodList.Remove(this); player.attemptsLeft -= 1;} // Hit 'Ground'
+            else if (pos.Y >= Window.Height) 
+            {
+                // Hit 'Ground'
+                GameObject.foodList.Remove(this); player.attemptsLeft -= 1;
+            } 
         }
     }
 
