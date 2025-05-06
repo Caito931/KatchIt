@@ -2,6 +2,7 @@
 
 using System;
 using System.Numerics;
+using Main;
 using Raylib_cs;
 
 namespace KatchIt;
@@ -39,7 +40,11 @@ class Food
             if (pos.Y + size.Y/2 >= bowl.pos.Y && 
                 pos.X > bowl.pos.X && 
                 pos.X < bowl.pos.X + bowl.size.X) 
-            { GameObject.foodList.Remove(this); player.score += 10;} // Hit Bowl
+            { 
+                // Hit Bowl
+                GameObject.foodList.Remove(this); player.score += 10;
+                GameObject.circeffects.Add(new CircEffect(pos, 1, 1, 50, 100, "Explode", this.color, 1));
+            }
             else if (pos.Y >= Window.Height) { GameObject.foodList.Remove(this); player.attemptsLeft -= 1;} // Hit 'Ground'
         }
         else if (shape == "circle")
@@ -47,7 +52,11 @@ class Food
             if (pos.Y + size.Y >= bowl.pos.Y && 
                 pos.X > bowl.pos.X && 
                 pos.X < bowl.pos.X + bowl.size.X) 
-            { GameObject.foodList.Remove(this); player.score += 10;} // Hit Bowl
+            {
+                // Hit Bowl
+                GameObject.foodList.Remove(this); player.score += 10;
+                GameObject.circeffects.Add(new CircEffect(pos, 1, 1, 50, 100, "Explode", this.color, 1));
+            }
             else if (pos.Y >= Window.Height) { GameObject.foodList.Remove(this); player.attemptsLeft -= 1;} // Hit 'Ground'
         }
     }

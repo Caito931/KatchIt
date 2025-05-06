@@ -2,6 +2,7 @@
 
 using System;
 using System.Numerics;
+using Main;
 using Raylib_cs;
 
 namespace KatchIt;
@@ -9,6 +10,8 @@ namespace KatchIt;
 // Class to hold objects
 class GameObject
 {
+    // Circle Effects
+    public static List<CircEffect> circeffects = new List<CircEffect>();
 
     // Bowl of the Player
     public static Player player = 

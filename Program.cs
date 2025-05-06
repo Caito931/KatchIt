@@ -2,6 +2,7 @@
 
 using System;
 using System.Numerics;
+using Main;
 using Raylib_cs;
 
 namespace KatchIt;
@@ -15,6 +16,7 @@ class Program
     {
         // Window
         Raylib.InitWindow(Window.Width, Window.Height, "Katch It!");
+        Raylib.SetTargetFPS(60);
 
         // Possible Colors
         List<Color> Pcolor = new List<Color>();
@@ -77,12 +79,18 @@ class Program
                 GameObject.foodList[i].Update(dt, GameObject.player.bowl, GameObject.player);
             }
 
+            for (int i = GameObject.circeffects.Count() - 1; i >= 0; i--)
+            {
+                GameObject.circeffects[i].Update(dt, GameObject.circeffects);
+            }
+
             // Draw
             Raylib.BeginDrawing();
                 // TODO
                 Raylib.ClearBackground(Color.RayWhite);
                 GameObject.player.Draw();
                 foreach (Food f in GameObject.foodList) { f.Draw(); }
+                foreach (CircEffect ce in GameObject.circeffects) { ce.Draw(); }
             Raylib.EndDrawing();
         }
         Raylib.CloseWindow();
