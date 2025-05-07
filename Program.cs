@@ -68,25 +68,44 @@ class Program
 
             // Objects
 
+            // Player
             GameObject.player.Update(dt);
 
+            // Foods
             for (int i = GameObject.foodList.Count() - 1; i >= 0; i--)
             {
                 GameObject.foodList[i].Update(dt, GameObject.player.bowl, GameObject.player);
             }
 
+            // Circle Effects
             for (int i = GameObject.circeffects.Count() - 1; i >= 0; i--)
             {
                 GameObject.circeffects[i].Update(dt, GameObject.circeffects);
             }
 
+            // Text Effects
+            for (int i = GameObject.texteffects.Count() - 1; i >= 0; i--)
+            {
+                GameObject.texteffects[i].Update(dt, GameObject.texteffects);
+            }
+
             // Draw
             Raylib.BeginDrawing();
-                // TODO
-                Raylib.ClearBackground(Color.RayWhite);
+                // Background
+                Raylib.ClearBackground(Color.Black);
+
+                // Player
                 GameObject.player.Draw();
+
+                // Foods
                 foreach (Food f in GameObject.foodList) { f.Draw(); }
+                
+                // Circle Effects
                 foreach (CircEffect ce in GameObject.circeffects) { ce.Draw(); }
+
+                // Text Effects
+                foreach (TextEffect te in GameObject.texteffects) { te.Draw(); }
+
             Raylib.EndDrawing();
         }
         Raylib.CloseWindow();

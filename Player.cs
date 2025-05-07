@@ -40,7 +40,8 @@ class Player
         this.bowl.Draw();
 
         // Attempts & Score
-        Raylib.DrawText($"Left:{Convert.ToString(this.attemptsLeft)}", 5, 0, 24, Color.DarkGreen);
-        Raylib.DrawText($"Score:{Convert.ToString(this.score)}", Window.Width-150, 0, 24, Color.Gray);
+        Raylib.DrawText($"Left:{Convert.ToString(this.attemptsLeft)}", 5, 0, 24, Color.Brown);
+        Raylib.DrawText("Score:", Window.Width-150, 0, 24, Color.Brown);
+        Raylib.DrawText(Convert.ToString(this.score), Window.Width-75+5, 0, 25, Color.Green);
     }
 }

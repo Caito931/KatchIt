@@ -17,7 +17,10 @@ class Food
     public Color color;
     public double angle;
     public int rSpeed; // Rotation Speed
-    private static int downSpeed = 200;
+    private static int downSpeed = 10;
+    public double velY = 0;
+    private static int maxDownSpeed = 300;
+    private static int scoreToPlayer = 10;
 
     // Constructor
     public Food(Vector2 pos, Vector2 size, String shape, Color color, int rSpeed)
@@ -32,6 +35,13 @@ class Food
     // Methods
     //----------------------------
 
+    // Spawn Effects
+    public void SpawnEffects()
+    {
+        GameObject.circeffects.Add(new CircEffect(pos, 1, 1, 50, 100, "Explode", color, 1));
+        GameObject.texteffects.Add(new TextEffect(pos, Convert.ToString(scoreToPlayer), "+", 24, color, 50, -1, 0.01f));
+    }
+
     // Check Collision
     public void CheckCollisionWithBowl(Bowl bowl, Player player)
     {
@@ -43,8 +53,9 @@ class Food
                 pos.X < bowl.pos.X + bowl.size.X) 
             { 
                 // Hit Bowl
-                GameObject.foodList.Remove(this); player.score += 10;
-                GameObject.circeffects.Add(new CircEffect(pos, 1, 1, 50, 100, "Explode", this.color, 1));
+                GameObject.foodList.Remove(this); player.score += scoreToPlayer;
+                SpawnEffects();
+                
             }
             else if (pos.Y >= Window.Height) 
             {
@@ -62,7 +73,7 @@ class Food
             {
                 // Hit Bowl
                 GameObject.foodList.Remove(this); player.score += 10;
-                GameObject.circeffects.Add(new CircEffect(pos, 1, 1, 50, 100, "Explode", this.color, 1));
+                SpawnEffects();
             }
             else if (pos.Y >= Window.Height) 
             {
@@ -79,7 +90,8 @@ class Food
     public void Update(double dt, Bowl bowl, Player player)
     {
         // Down
-        pos.Y += downSpeed * (float)dt;
+        if (velY < maxDownSpeed) { velY += downSpeed * dt; }
+        pos.Y += (float)velY;
 
         // Check Collision
         CheckCollisionWithBowl(bowl, player);

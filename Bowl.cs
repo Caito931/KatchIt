@@ -13,6 +13,7 @@ class Bowl
     public Vector2 size;
     public double speed;
     public Color color;
+    public double velX;
 
     // Constructor
     public Bowl(Vector2 pos, Vector2 size, double speed, Color color)
@@ -29,10 +30,40 @@ class Bowl
     // Move
     public void Move(double dt)
     {
-        // Left
-        if(Raylib.IsKeyDown(KeyboardKey.A)) { this.pos.X -= (float)(this.speed * dt); }
-        // Right
-        if(Raylib.IsKeyDown(KeyboardKey.D)) { this.pos.X += (float)(this.speed * dt); }
+        float acceleration = (float)(speed * dt);
+        float maxSpeed = (float)speed;
+        float friction = 0.9f; // Or tune this closer to 1 for slower stop
+
+        // Input handling
+        if (Raylib.IsKeyDown(KeyboardKey.A))
+        {
+            if(!(pos.X <= 0)) 
+            {
+                velX -= acceleration;
+            }
+        }
+        else if (Raylib.IsKeyDown(KeyboardKey.D))
+        {
+            if (!(pos.X + size.X >= Window.Width))
+            {
+                velX += acceleration;
+            }
+        }
+        else
+        {
+            // Apply friction when no keys are pressed
+            velX *= friction;
+
+            // Stop tiny movement noise
+            if (Math.Abs(velX) < 0.01f)
+                velX = 0;
+        }
+
+        // Clamp speed to avoid infinite acceleration
+        velX = Math.Clamp(velX, -maxSpeed, maxSpeed);
+
+        // Apply movement
+        pos.X += (float)velX;
     }
 
     // Keep in Bounds
